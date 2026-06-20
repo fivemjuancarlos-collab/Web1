@@ -349,30 +349,27 @@ app.get('/logout', (req, res) => {
     });
 });
 
-const server = app.listen(PORT, () => {
-    console.log('\n' + '='.repeat(50));
-    console.log('✅ Sistema de Verificación Discord ENCENDIDO');
-    console.log(`🌐 URL: http://localhost:${PORT}`);
-    console.log('🤖 Bot API: Configurado correctamente');
-    console.log('📋 ID del servidor:', process.env.DISCORD_GUILD_ID);
-    console.log('🎭 ID del rol verificado:', process.env.DISCORD_VERIFIED_ROLE_ID);
-    console.log('📢 ID del canal de logs:', process.env.DISCORD_LOG_CHANNEL_ID);
-    console.log('='.repeat(50) + '\n');
-});
-
-// Keep the server alive
-server.on('error', (err) => {
-    console.error('🔥 Error del servidor:', err);
-});
-
-process.on('SIGINT', () => {
-    console.log('\n🛑 Servidor apagándose...');
-    server.close(() => {
-        process.exit(0);
+// Iniciar servidor solo LOCALMENTE (para desarrollo)
+if (process.env.NODE_ENV !== 'production') {
+    const server = app.listen(PORT, () => {
+        console.log('\n' + '='.repeat(50));
+        console.log('✅ Sistema de Verificación Discord ENCENDIDO');
+        console.log(`🌐 URL: http://localhost:${PORT}`);
+        console.log('🤖 Bot API: Configurado correctamente');
+        console.log('='.repeat(50) + '\n');
     });
-});
 
-// Mantener el servidor vivo
-setInterval(() => {
-    console.log('✅ Servidor está activo...');
-}, 5000);
+    server.on('error', (err) => {
+        console.error('🔥 Error del servidor:', err);
+    });
+
+    process.on('SIGINT', () => {
+        console.log('\n🛑 Servidor apagándose...');
+        server.close(() => {
+            process.exit(0);
+        });
+    });
+}
+
+// Exportar la app para Vercel
+module.exports = app;
