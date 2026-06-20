@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación Exitosa!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 80px;
+            text-align: center;
+            max-width: 900px;
+            width: 90%;
+            box-shadow: 0 25px 80px rgba(34, 197, 94, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-icon {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 5px 20px rgba(34, 197, 94, 0.5);
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 20px 60px;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(34, 197, 94, 0.6);
+        }
+
+        /* Decoraciones */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+        }
+
+        .glow-1 {
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: #22c55e;
+        }
+
+        .glow-2 {
+            bottom: -50px;
+            left: -50px;
+            width: 250px;
+            height: 250px;
+            background: #16a34a;
+        }
+    </style>
+</head>
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <h1>¡Verificación Exitosa!</h1>
+        <p><%= message %></p>
+        <a href="/" class="back-btn">Volver al inicio</a>
+    </div>
+</body>
+</html>
