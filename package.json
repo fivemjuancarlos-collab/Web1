@@ -2,9 +2,9 @@
   "name": "discord-verification-system",
   "version": "1.0.0",
   "description": "Sistema de verificación para Discord con detección de VPN",
-  "main": "server.js",
+  "main": "start.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node start.js"
   },
   "keywords": ["discord", "verification", "bot"],
   "author": "",
